@@ -1,0 +1,7 @@
+front_end/node_modules
+*.DS_Store*
+*.pyc
+front_end/build/
+*.idea*
+*.vscode*
+*__pycache__*
