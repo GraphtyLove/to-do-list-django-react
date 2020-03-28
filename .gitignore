@@ -5,3 +5,4 @@ front_end/build/
 *.idea*
 *.vscode*
 *__pycache__*
+front-end/build
