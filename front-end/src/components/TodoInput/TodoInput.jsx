@@ -67,7 +67,7 @@ const TodoInput = props => {
                     value={taskToAddText}
                     onChange={handleChangeTaskText}
                 />
-                <div className="df-center-row" df-center-col style={styleInputContainer}>
+                <div className="df-center-row" style={styleInputContainer}>
                     <p>Is done?</p>
                     <Checkbox
                         checked={taskToAddIsChecked}

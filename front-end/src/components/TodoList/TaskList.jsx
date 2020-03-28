@@ -16,7 +16,10 @@ const TaskList = props => {
             <h2>Task List</h2>
             <ul style={styleTaskList}>
                 {props.fetchError && <p style={{ color: 'red', textAlign: 'center' }}>Error while fetching the API...</p>}
-                {!props.fetchError && props.tasks && props.tasks.length > 0 && props.tasks.map(task => <TaskItem task={task} key={task.id} />)}
+                {!props.fetchError
+                    && props.tasks
+                    && props.tasks.length > 0
+                    && props.tasks.map(task => <TaskItem task={task} deleteTask={props.deleteTask} key={task.id} />)}
             </ul>
         </main>
     )

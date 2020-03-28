@@ -18,6 +18,16 @@ function App() {
             .then(data => setTasks(data))
             .catch(err => setFetchError(err))
     }
+    // Delete a task
+    const deleteTask = taskId => {
+        console.log(`deleting task ${taskId}...`)
+        fetch(`http://127.0.0.1:8000/api/task-delete/${taskId}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(setTimeout(fetchTasksFromApi, 100))
+            .catch(err => setFetchError(err))
+    }
     // Use effects
     useEffect(() => {
         fetchTasksFromApi()
@@ -29,6 +39,7 @@ function App() {
             <TaskList
                 tasks={tasks}
                 fetchErrors={fetchError}
+                deleteTask={deleteTask}
             />
             <TodoInput
                 fetchTask={() => fetchTasksFromApi()}
