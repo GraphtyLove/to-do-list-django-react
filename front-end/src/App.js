@@ -11,10 +11,10 @@ function App() {
     const [tasks, setTasks] = useState([])
     const [fetchError, setFetchError] = useState(false)
 
-    // Function:
+
     // Get a cookie with a specific name
     const getCookie = name => {
-        let cookieValue = null;
+        let cookieValue = null
         if (document.cookie && document.cookie !== '') {
             let cookies = document.cookie.split(';')
             for (let i = 0; i < cookies.length; i++) {
@@ -26,11 +26,19 @@ function App() {
                 }
             }
         }
-        return cookieValue;
+        return cookieValue
     }
+    const csrftoken = getCookie('csrftoken')
+    // * --- Functions fetch --- *
     // Fetch the tasks from the API
     const fetchTasksFromApi = () => {
-        fetch('http://127.0.0.1:8000/api/task-list/')
+        fetch('http://127.0.0.1:8000/api/task-list/', {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+                'X-CSRFToken': csrftoken
+            }
+        })
             .then(res => res.json())
             .then(data => setTasks(data))
             .catch(err => setFetchError(err))
@@ -41,7 +49,7 @@ function App() {
             method: 'DELETE'
         })
             .then(res => res.json())
-            .then(setTimeout(fetchTasksFromApi, 200))
+            .then(setTimeout(fetchTasksFromApi, 1000))
             .catch(err => setFetchError(err))
     }
     // Update a task
@@ -62,7 +70,7 @@ function App() {
             body: JSON.stringify(taskToAdd)
         })
             .then(res => res.json())
-            .then(setTimeout(fetchTasksFromApi, 200))
+            .then(setTimeout(fetchTasksFromApi, 1000))
             .catch(err => setFetchError(err))
     }
     // Use effects
@@ -70,7 +78,7 @@ function App() {
         fetchTasksFromApi()
     }, [])
 
-    const csrftoken = getCookie('csrftoken')
+
 
     return (
         <div className="App">
