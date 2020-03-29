@@ -127,7 +127,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'front-end/build/static')
+    os.path.join(BASE_DIR, 'front-end/build/static'),
 ]
 
 CORS_ORIGIN_REGEX_WHITELIST = [
