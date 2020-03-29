@@ -36,7 +36,7 @@ const TodoInput = props => {
 
     // Style:
     const styleInputContainer = {
-        width: '50%',
+        width: '70%',
         marginTop: '20px'
     }
 

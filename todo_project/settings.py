@@ -133,4 +133,5 @@ STATICFILES_DIRS = [
 CORS_ORIGIN_REGEX_WHITELIST = [
     "http://localhost:3000"
 ]
+# TODO: Delete and find why a regular cors doesn't work on the task=list route.
 CORS_ORIGIN_ALLOW_ALL=True 
