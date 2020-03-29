@@ -16,29 +16,13 @@ const TodoInput = props => {
         setTaskAddToText(event.target.value);
     }
 
-    // Functions:
-    const getCookie = name => {
-        let cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            let cookies = document.cookie.split(';')
-            for (let i = 0; i < cookies.length; i++) {
-                let cookie = cookies[i].trim()
-                // Does this cookie string begin with the name we want?
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1))
-                    break
-                }
-            }
-        }
-        return cookieValue;
-    }
+    // Send a new task to the DB
     const sendNewTaskToApi = () => {
-        const csrftoken = getCookie('csrftoken')
         fetch('http://127.0.0.1:8000/api/task-create/', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
-                'X-CSRFToken': csrftoken,
+                'X-CSRFToken': props.csrftoken,
             },
             body: JSON.stringify({
                 title: taskToAddText,
@@ -49,7 +33,6 @@ const TodoInput = props => {
         setTaskAddToText('')
         setTaskToAddIsChecked(false)
     }
-
 
     // Style:
     const styleInputContainer = {

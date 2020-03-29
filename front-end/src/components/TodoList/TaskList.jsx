@@ -19,7 +19,12 @@ const TaskList = props => {
                 {!props.fetchError
                     && props.tasks
                     && props.tasks.length > 0
-                    && props.tasks.map(task => <TaskItem task={task} deleteTask={props.deleteTask} key={task.id} />)}
+                    && props.tasks.map(task => <TaskItem
+                        task={task}
+                        deleteTask={props.deleteTask}
+                        updateTask={props.updateTask}
+                        key={task.id}
+                    />)}
             </ul>
         </main>
     )
