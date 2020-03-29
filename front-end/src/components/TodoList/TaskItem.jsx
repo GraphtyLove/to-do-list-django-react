@@ -40,7 +40,7 @@ const TaskItem = props => {
 
             {!editMode
                 ? <Fragment>
-                    <p> {props.task.title} </p>
+                    <p style={{ textDecoration: taskIsCompleted && 'line-through' }}> {props.task.title} </p>
                     <EditIcon
                         className="pointer"
                         style={{ marginLeft: 'auto', color: '#303F9F' }}
