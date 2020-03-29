@@ -30,7 +30,6 @@ function App() {
     }
     // Fetch the tasks from the API
     const fetchTasksFromApi = () => {
-        console.log('Fetching...')
         fetch('http://127.0.0.1:8000/api/task-list/')
             .then(res => res.json())
             .then(data => setTasks(data))
@@ -38,7 +37,6 @@ function App() {
     }
     // Delete a task
     const deleteTask = taskId => {
-        console.log(`deleting task ${taskId}...`)
         fetch(`http://127.0.0.1:8000/api/task-delete/${taskId}`, {
             method: 'DELETE'
         })
